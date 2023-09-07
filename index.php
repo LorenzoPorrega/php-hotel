@@ -67,22 +67,20 @@
       <div class="row">
         <div class="col-6">
           <select class="form-select" aria-label="Default select example" name="parkingFilter">
-            <option value = "" selected disabled>Filtra per parcheggio</option>
+            <option value = "null" selected disabled>Filtra per parcheggio</option>
             <option value="1">Parcheggio</option>
-            <option value="2">Niente parcheggio</option>
+            <option value="0">Niente parcheggio</option>
           </select>
         </div>
         <div class="col-6">
-          <!--
-          <select class="form-select" aria-label="Default select example">
-            <option selected>Filtra per voto</option>
+          <select class="form-select" aria-label="Default select example" name="rateFilter">
+            <option selected value = "null">Filtra per un voto uguale o maggiore a</option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
-            <option value="3">4</option>
-            <option value="3">5</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
           </select>
-        -->
         </div>
       </div>
       <div class="row mt-3">
@@ -95,10 +93,10 @@
     <table class="table mt-5 trable-striped">
       <thead>
         <tr>
-          <th scope="col">Nome</th>
-          <th scope="col">Parcheggio</th>
-          <th scope="col">Voto</th>
-          <th scope="col">Distanza dal centro (km)</th>
+          <th class="fs-5" scope="col">Nome</th>
+          <th class="fs-5" scope="col">Parcheggio</th>
+          <th class="fs-5" scope="col">Voto</th>
+          <th class="fs-5" scope="col">Distanza dal centro (km)</th>
         </tr>
       </thead>
       <tbody>

@@ -39,6 +39,7 @@
     //$availableParking = array_filter($hotels, ['parking',  false]);
     //$unavailableParking = array_diff($hotels, ['parking', true]);
     $parkingFilter = $_POST["parkingFilter"];
+    $rateFilter = $_POST["rateFilter"];
 ?>
 
 <!DOCTYPE html>
@@ -70,18 +71,22 @@
     <table class="table mt-5 table-striped">
       <thead>
         <tr>
-          <th scope="col">Nome</th>
-          <th scope="col">Parcheggio</th>
-          <th scope="col">Voto</th>
-          <th scope="col">Distanza dal centro (km)</th>
+          <th class="fs-5" scope="col">Nome</th>
+          <th class="fs-5" scope="col">Parcheggio</th>
+          <th class="fs-5" scope="col">Voto</th>
+          <th class="fs-5" scope="col">Distanza dal centro (km)</th>
         </tr>
       </thead>
       <tbody>
           <?php if($parkingFilter = true){
-            echo $parkingFilter . ' selezionato';
+            echo 'Hai selezionato la select con valore ' . $parkingFilter . ' <small>(1 = con parcheggio, 0 = senza parcheggio)</small>';
           }
-          if($parkingFilter = 2){
-            foreach ($hotels as $singleHotel){
+          foreach ($hotels as $singleHotel){
+            if(!$_POST
+            || $_POST["parkingFilter"] == 'null' && $_POST["rateFilter"] == 'null'
+            || $_POST["parkingFilter"] == $singleHotel["parking"] && $_POST["rateFilter"] == 'null'
+            || $_POST["parkingFilter"] == $singleHotel["parking"] && $singleHotel["vote"] >=  $_POST["rateFilter"]
+            || $_POST["parkingFilter"] == 'null' && $singleHotel["vote"] >=  $_POST["rateFilter"]){
           ?>
             <tr>
               <th scope="row">
